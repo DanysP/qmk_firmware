@@ -4,10 +4,11 @@
 #include QMK_KEYBOARD_H
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /*
+/*
      * ┌───┬───┬───┬───┐
-     * │Esc│Tab│MO1│Bsp│
-     * ├───┼───┼───┼───┤
+     * │Pre│PaP│Nex│Slp│
+     * └───┴───┴───┴───┘
+     * ┌───┬───┬───┬───┐
      * │Num│ / │ * │ - │
      * ├───┼───┼───┼───┤
      * │ 7 │ 8 │ 9 │   │
@@ -20,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └───────┴───┴───┘
      */
     [0] = LAYOUT_numpad_6x4(
-        KC_ESC,  KC_TAB,  MO(1),   KC_BSPC,
+        KC_MPRV, KC_MPLY, KC_MNXT, KC_SLEP,
         KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
         KC_P7,   KC_P8,   KC_P9,
         KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
@@ -28,10 +29,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_P0,            KC_PDOT, KC_PENT
     ),
 
-    /*
-     * ┌───┐───┬───┬───┐
-     * │Rst│Tab│MO1│Bsp│
-     * └───┘───┼───┼───┤
+   /*
+     * ┌───┬───┬───┬───┐
+     * │Pre│PaP│Nex│Slp│
+     * └───┴───┴───┴───┘
+     * ┌───┬───┬───┬───┐
      * │Num│ / │ * │ - │
      * ┌───┬───┬───┐───┤
      * │Hom│ ↑ │PgU│   │
