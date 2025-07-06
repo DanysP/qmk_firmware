@@ -2,12 +2,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include "oled_driver.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
-     * ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
-     * │Esc│   │F1 │F2 │F3 │F4 │ │F5 │F6 │F7 │F8 │ │F9 │F10│F11│F12│ │PSc│Scr│Pse│
-     * └───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘
+     * ┌───┐┌───┬───┬───┬───┐┌───┬───┬───┬───┐┌───┬───┬───┬───┐┌───┐ ┌───┬───┬───┐
+     * │Esc││F1 │F2 │F3 │F4 ││F5 │F6 │F7 │F8 ││F9 │F10│F11│F12│|Rot| │PSc│Scr│Pse│
+     * └───┘└───┴───┴───┴───┘└───┴───┴───┴───┘└───┴───┴───┴───┘└───┘ └───┴───┴───┘
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐
      * │ ` │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │ Backsp│ │Ins│Hom│PgU│
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤
@@ -30,3 +31,59 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT
     )
 };
+
+// Track the button state to detect press/release transitions
+static bool encoder_button_pressed = false;
+
+void matrix_init_user(void) {
+    // Initialize the encoder button pin as input with pull-up resistor enabled
+    setPinInputHigh(ENCODER_BUTTON_PIN);
+}
+
+void matrix_scan_user(void) {
+    // Active low button: pressed when pin reads LOW (false)
+    bool pressed = !readPin(ENCODER_BUTTON_PIN);
+
+    if (pressed && !encoder_button_pressed) {
+        encoder_button_pressed = true;
+        // On button press, send MUTE toggle keycode
+        tap_code(KC_MUTE);
+    } else if (!pressed && encoder_button_pressed) {
+        encoder_button_pressed = false;
+        // Button released - no action needed here
+    }
+}
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (clockwise) {
+        tap_code(KC_VOLU);
+    } else {
+        tap_code(KC_VOLD);
+    }
+    return true;
+}
+#ifdef OLED_DRIVER_ENABLE
+
+void oled_show_lock_states(void) {
+    oled_clear();
+    led_t led_state = host_keyboard_led_state();
+
+    // Display NUM at top left
+    oled_set_cursor(0, 0);
+    if (led_state.num_lock) {
+        oled_write_P(PSTR("NUM"), false);
+    }
+
+    // Display CAPS at top center (approx, assuming 21 cols on 128x32)
+    oled_set_cursor(7, 0);
+    if (led_state.caps_lock) {
+        oled_write_P(PSTR("CAPS"), false);
+    }
+
+    // Display SCRL at top right
+    oled_set_cursor(15, 0);
+    if (led_state.scroll_lock) {
+        oled_write_P(PSTR("SCRL"), false);
+    }
+}
+#endif

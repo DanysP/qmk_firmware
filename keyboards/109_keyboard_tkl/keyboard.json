@@ -1,5 +1,5 @@
 {
-    "manufacturer": "Petras Danys",
+    "manufacturer": "NoEmptyGlass",
     "keyboard_name": "109_keyboard_tkl",
     "maintainer": "DanysP",
     "bootloader": "stm32-dfu",
@@ -15,7 +15,7 @@
         "rows": ["D1", "D1", "D1", "D1", "D1", "D1"]
     },
     "processor": "STM32G474",
-    "url": "",
+    "url": "https://noemptyglass.com",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x0000",
