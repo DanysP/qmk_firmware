@@ -31,8 +31,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-#include QMK_KEYBOARD_H
-
 // Track button state for debounce
 static bool encoder_button_pressed = false;
 

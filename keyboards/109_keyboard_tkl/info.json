@@ -47,12 +47,6 @@
     }
   },
 
-  "serial": {
-    "full_duplex": true,
-    "tx_pin": "pa2",
-    "rx_pin": "pa3"
-  },
-
   "layouts": {
     "LAYOUT_tkl_iso": {
       "layout": [

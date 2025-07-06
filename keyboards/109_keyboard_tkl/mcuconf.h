@@ -25,4 +25,61 @@
 #define STM32_I2C_I2C1_RX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 7) // Defines the DMA stream for I2C1 receive operations
 #define STM32_I2C_I2C1_TX_DMA_STREAM        STM32_DMA_STREAM_ID(1, 6) // Defines the DMA stream for I2C1 transmit operations
 
-#define SOFT_SERIAL_PIN GPIOA_PIN15 // Defines the pin for software serial communication
+// EXTI priorities
+#define STM32_IRQ_EXTI0_PRIORITY       13
+#define STM32_IRQ_EXTI1_PRIORITY       13
+#define STM32_IRQ_EXTI2_PRIORITY       13
+#define STM32_IRQ_EXTI3_PRIORITY       13
+#define STM32_IRQ_EXTI4_PRIORITY       13
+#define STM32_IRQ_EXTI5_9_PRIORITY     13
+#define STM32_IRQ_EXTI10_15_PRIORITY   13
+#define STM32_IRQ_EXTI16_40_41_PRIORITY 13
+#define STM32_IRQ_EXTI17_PRIORITY      13
+#define STM32_IRQ_EXTI18_PRIORITY      13
+#define STM32_IRQ_EXTI19_PRIORITY      13
+#define STM32_IRQ_EXTI20_PRIORITY      13
+#define STM32_IRQ_EXTI21_22_29_PRIORITY 13
+#define STM32_IRQ_EXTI30_32_PRIORITY   13
+#define STM32_IRQ_EXTI33_PRIORITY      13
+
+// FDCAN priorities
+#define STM32_IRQ_FDCAN1_PRIORITY      13
+#define STM32_IRQ_FDCAN2_PRIORITY      13
+#define STM32_IRQ_FDCAN3_PRIORITY      13
+
+// USART/UART priorities
+#define STM32_IRQ_USART1_PRIORITY      13
+#define STM32_IRQ_USART2_PRIORITY      13
+#define STM32_IRQ_USART3_PRIORITY      13
+#define STM32_IRQ_UART4_PRIORITY       13
+#define STM32_IRQ_UART5_PRIORITY       13
+#define STM32_IRQ_LPUART1_PRIORITY     13
+
+// TIM priorities
+#define STM32_IRQ_TIM1_BRK_TIM15_PRIORITY    13
+#define STM32_IRQ_TIM1_UP_TIM16_PRIORITY     13
+#define STM32_IRQ_TIM1_TRGCO_TIM17_PRIORITY  13
+#define STM32_IRQ_TIM1_CC_PRIORITY           13
+#define STM32_IRQ_TIM2_PRIORITY              13
+#define STM32_IRQ_TIM3_PRIORITY              13
+#define STM32_IRQ_TIM4_PRIORITY              13
+#define STM32_IRQ_TIM5_PRIORITY              13
+#define STM32_IRQ_TIM6_PRIORITY              13
+#define STM32_IRQ_TIM7_PRIORITY              13
+#define STM32_IRQ_TIM8_UP_PRIORITY           13
+#define STM32_IRQ_TIM8_CC_PRIORITY           13
+#define STM32_IRQ_TIM18_DAC3_PRIORITY        13
+#define STM32_IRQ_TIM20_CC_PRIORITY          13
+#define STM32_IRQ_TIM20_UP_PRIORITY          13
+#define STM32_IRQ_TIM6_DACUNDER_PRIORITY    13
+#define STM32_IRQ_TIM7_PRIORITY             13
+#define STM32_IRQ_TIM8_UP_PRIORITY          13
+#define STM32_IRQ_TIM15_PRIORITY            13
+#define STM32_IRQ_TIM16_PRIORITY            13
+#define STM32_IRQ_TIM17_PRIORITY            13
+#define STM32_IRQ_TIM18_DAC3_PRIORITY       13
+#define STM32_IRQ_TIM20_CC_PRIORITY         13
+
+// Missing EXTI group interrupt priorities
+#define STM32_IRQ_EXTI164041_PRIORITY    13
+#define STM32_IRQ_EXTI212229_PRIORITY    13

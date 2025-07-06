@@ -13,6 +13,3 @@
 #define OLED_TIMEOUT 30000 // OLED timeout in milliseconds, after which the display will turn off to save power
 #define OLED_UPDATE_INTERVAL 100 // OLED update interval in milliseconds, how often the display will refresh
 #define OLED_DISPLAY_128X32 // Display resolution
-
-// USART configuration
-#define SERIAL_USART_FULL_DUPLEX // Full duplex mode for USART communication, only if the hardware supports it
