@@ -1,0 +1,32 @@
+{
+  "keyboard": "109_keyboard_tkl",
+  "manufacturer": "NoEmptyGlass",
+  "product": "The 109 Keyboard - Tenkeyless",
+  "matrix": {
+    "rows": 6,
+    "cols": 18,
+    "row_pins": ["pc3", "pc2", "pc1", "pa10", "pa0", "pa1"],
+    "col_pins": ["pa7", "pc4", "pc5", "pb0", "pb1", "pb2", "pb10", "pb11", "pb15", "pc6", "pc7", "pc8", "pc9", "pa8", "pa9", "pa6", "pa4", "pa5"],
+    "diode_direction": "col2row"
+  },
+  "debounce": 5,
+  "encoder": {
+    "pads": ["pb13", "pb12"],
+    "resolution": 6,
+    "button_pin": "pb14"
+  },
+  "oled": {
+    "timeout": 30000,
+    "update_interval": 100,
+    "display": "128x32",
+    "i2c_pins": {
+      "scl": "pb6",
+      "sda": "pb7"
+    }
+  },
+  "serial": {
+    "full_duplex": true,
+    "tx_pin": "pa2",
+    "rx_pin": "pa3"
+  }
+}

@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include "oled_driver.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -62,28 +61,3 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     return true;
 }
-#ifdef OLED_DRIVER_ENABLE
-
-void oled_show_lock_states(void) {
-    oled_clear();
-    led_t led_state = host_keyboard_led_state();
-
-    // Display NUM at top left
-    oled_set_cursor(0, 0);
-    if (led_state.num_lock) {
-        oled_write_P(PSTR("NUM"), false);
-    }
-
-    // Display CAPS at top center (approx, assuming 21 cols on 128x32)
-    oled_set_cursor(7, 0);
-    if (led_state.caps_lock) {
-        oled_write_P(PSTR("CAPS"), false);
-    }
-
-    // Display SCRL at top right
-    oled_set_cursor(15, 0);
-    if (led_state.scroll_lock) {
-        oled_write_P(PSTR("SCRL"), false);
-    }
-}
-#endif
