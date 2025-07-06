@@ -31,25 +31,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-// Track the button state to detect press/release transitions
+#include QMK_KEYBOARD_H
+
+// Track button state for debounce
 static bool encoder_button_pressed = false;
 
+// Replace these with your actual encoder button pin macro, if needed
+// #define ENCODER_BUTTON_PIN <your_pin_here>
+
 void matrix_init_user(void) {
-    // Initialize the encoder button pin as input with pull-up resistor enabled
+    // Initialize encoder button pin as input with pull-up if needed
     setPinInputHigh(ENCODER_BUTTON_PIN);
 }
 
 void matrix_scan_user(void) {
-    // Active low button: pressed when pin reads LOW (false)
+    // Read the encoder button state (active low assumed)
     bool pressed = !readPin(ENCODER_BUTTON_PIN);
 
     if (pressed && !encoder_button_pressed) {
         encoder_button_pressed = true;
-        // On button press, send MUTE toggle keycode
         tap_code(KC_MUTE);
     } else if (!pressed && encoder_button_pressed) {
         encoder_button_pressed = false;
-        // Button released - no action needed here
     }
 }
 

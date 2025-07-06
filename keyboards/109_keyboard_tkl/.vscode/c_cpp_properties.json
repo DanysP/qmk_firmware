@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "defines": [
+                "QMK_KEYBOARD_H",
+                "F_CPU=16000000UL",
+                "STM32G474",
+                "__GNUC__"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "macos-clang-arm64",
+            "includePath": [
+                "${workspaceFolder}/quantum",
+                "${workspaceFolder}/quantum/keyboard",
+                "${workspaceFolder}/quantum/quantum",
+                "${workspaceFolder}/drivers",
+                "${workspaceFolder}/lib/chibios/os/hal/include",
+                "${workspaceFolder}/lib/chibios/os/hal/platforms/STM32",
+                "${workspaceFolder}/lib/chibios/os/common",
+                "${workspaceFolder}/lib/chibios/os"
+            ]
+        }
+    ],
+    "version": 4
+}

@@ -1,6 +1,9 @@
+MCU = STM32G474 # Define the MCU type
 SPLIT_KEYBOARD = yes # Enable split keyboard support
+SPLIT_SERIAL = yes # Enable serial communication for split keyboards
+SERIAL_USART = yes # Enable USART for serial communication
 SERIAL_USART_FULL_DUPLEX = yes # Only if using hardware serial for communication
 ENCODER_ENABLE = yes # Enable rotary encoder support
 OLED_ENABLE = yes # Enable OLED display support
 OLED_DRIVER = ssd1306 # For both SSD1306, SH1106, and SH1107
-OLED_TRANSPORT = i2c
+OLED_TRANSPORT = i2c # Use I2C for OLED communication
