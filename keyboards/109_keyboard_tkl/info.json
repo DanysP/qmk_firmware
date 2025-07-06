@@ -1,27 +1,57 @@
 {
-  "keyboard": "109_keyboard_tkl",
+  "keyboard_name": "The 109 Keyboard",
+  "maintainer": "DanysP",
   "manufacturer": "NoEmptyGlass",
-  "product": "The 109 Keyboard - Tenkeyless",
-  "matrix": {
-    "rows": 6,
-    "cols": 18,
-    "row_pins": ["pc3", "pc2", "pc1", "pa10", "pa0", "pa1"],
-    "col_pins": ["pa7", "pc4", "pc5", "pb0", "pb1", "pb2", "pb10", "pb11", "pb15", "pc6", "pc7", "pc8", "pc9", "pa8", "pa9", "pa6", "pa4", "pa5"],
-    "diode_direction": "col2row"
+  "url": "https://noemptyglass.com",
+  "bootloader_instructions": "Togglie the sliding switch on the back of the PCB and briefly press the reset button",
+  "tags": ["iso", "tkl", "split", "stm32", "oled", "encoder"],
+
+  "bootloader": "stm32-dfu",
+  "processor": "STM32G474",
+
+  "build": {
+    "debounce_type": "",
+    "firmware_format": "bin",
+    "lto": false
   },
-  "debounce": 5,
+
   "encoder": {
     "pads": ["pb13", "pb12"],
     "resolution": 6,
     "button_pin": "pb14"
   },
+
+  "layouts": {
+  "LAYOUT_tkl_ansi": {
+    "layout": [
+      [{"x":0, "y":0}, {"x":1, "y":0}, {"x":2, "y":0}, {"x":3, "y":0}, {"x":4, "y":0}, {"x":5, "y":0}, {"x":6, "y":0}, {"x":7, "y":0}, {"x":8, "y":0}, {"x":9, "y":0}, {"x":10, "y":0}, {"x":11, "y":0}, {"x":12, "y":0}],
+      [{"x":0, "y":1.25}, {"x":1, "y":1.25}, {"x":2, "y":1.25}, {"x":3, "y":1.25}, {"x":4, "y":1.25}, {"x":5, "y":1.25}, {"x":6, "y":1.25}, {"x":7, "y":1.25}, {"x":8, "y":1.25}, {"x":9, "y":1.25}, {"x":10, "y":1.25}, {"x":11, "y":1.25}, {"x":12, "y":1.25}],
+      [{"x":0, "y":2.25}, {"x":1, "y":2.25}, {"x":2, "y":2.25}, {"x":3, "y":2.25}, {"x":4, "y":2.25}, {"x":5, "y":2.25}, {"x":6, "y":2.25}, {"x":7, "y":2.25}, {"x":8, "y":2.25}, {"x":9, "y":2.25}, {"x":10, "y":2.25}, {"x":11, "y":2.25}],
+      [{"x":0, "y":3.25}, {"x":1, "y":3.25}, {"x":2, "y":3.25}, {"x":3, "y":3.25}, {"x":4, "y":3.25}, {"x":5, "y":3.25}, {"x":6, "y":3.25}, {"x":7, "y":3.25}, {"x":8, "y":3.25}, {"x":9, "y":3.25}, {"x":10, "y":3.25}],
+      [{"x":0, "y":4.25}, {"x":1, "y":4.25}, {"x":2, "y":4.25}, {"x":3, "y":4.25}, {"x":4, "y":4.25}, {"x":5, "y":4.25}, {"x":6, "y":4.25}, {"x":7, "y":4.25}, {"x":8, "y":4.25}],
+      [{"x":0, "y":5.25}, {"x":1, "y":5.25}, {"x":2, "y":5.25}, {"x":3, "y":5.25}, {"x":4, "y":5.25}, {"x":5, "y":5.25}, {"x":6, "y":5.25}]
+    ]
+  }
+},
+
+  "debounce": 5,
+  "diode_direction": "COL2ROW",
+  "matrix_pins": {
+    "row_pins": ["PC3", "PC2", "PC1", "PA10", "PA0", "PA1"],
+    "col_pins": ["PA7", "PC4", "PC5", "PB0", "PB1", "PB2", "PB10", "PB11", "PB15", "PC6", "PC7", "PC8", "PC9", "PA8", "PA9", "PA6", "PA4", "PA5"]
+},
+
+  "split": {
+    "enabled": true
+  },
+
   "oled": {
     "timeout": 30000,
     "update_interval": 100,
     "display": "128x32",
     "i2c_pins": {
-      "scl": "pb6",
-      "sda": "pb7"
+      "scl": "PB6",
+      "sda": "PB7"
     }
   },
   "serial": {
